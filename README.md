@@ -1,27 +1,27 @@
-# ProductiveTimeTracker
+# Productive track time application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.6.
+Before starting application you will need to do some steps.
 
-## Development server
+First step is to clone this repository.
+After cloning open it using Visual Studio Code or any other code editor you want.
+In code editor open terminal (make sure you are positioned in root of application)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Then type command  for installing workspace npm dependencies:
 
-## Code scaffolding
+>npm install
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+-After the installation of all required npm dependency packages, for starting application in the same Terminal type command:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+>ng serve
 
-## Running unit tests
+-It will provide URL: http://localhost:4200/ copy that URL and past it into a new tab in Browser
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+# Productive track time application
+is application for tracking time on projects.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+NOTE:
+Authentication code and Organization ID is saved in environment file, in case you need/want to change it.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Cheers!
