@@ -1,0 +1,66 @@
+ <ngx-spinner [fullScreen]="false" name="savingspinner" type="ball-clip-rotate-multiple" size="medium">
+   <p class="loading text-white">Saving entry...</p>
+ </ngx-spinner>
+ <div class="h-100 p-3 bg-light border rounded-3">
+   <div *ngIf="isNewEntry">
+     <h2>Add new entry</h2>
+     <p>Please fill this form to add new entry!</p>
+   </div>
+   <div *ngIf="!isNewEntry">
+     <h2>Edit entry</h2>
+     <p>Please change data which you want to edit!</p>
+   </div>
+   <form [formGroup]="entryForm" (ngSubmit)="onSubmit()">
+     <div class="form-group">
+       <label for="project" class="form-label">Project *</label>
+       <select id="project" name="project" formControlName="project" class="form-control"
+         [ngClass]="{'is-invalid':form.project.touched && form.project.errors }"
+         (change)="getServices(form.project.value);">
+         <option [ngValue]="null">Choose...</option>
+         <option [ngValue]="j.id" *ngFor="let j of projects">
+           {{j.attributes.name}}
+         </option>
+       </select>
+       <div *ngIf="form.project.errors" class="invalid-feedback">
+         <div *ngIf="form.project.errors.required">Project is required!</div>
+       </div>
+     </div>
+     <div class="form-group position-relative">
+       <ngx-spinner [fullScreen]="false" name="servicesspinner" type="ball-clip-rotate-multiple" size="small">
+         <p class="loading text-white">Loading services...</p>
+       </ngx-spinner>
+       <label for="service" class="form-label">Service *</label>
+       <select id="service" name="service" formControlName="service" class="form-control"
+         [ngClass]="{'is-invalid':form.service.touched && form.service.errors }">
+         <option [ngValue]="null">Choose... </option>
+         <option [ngValue]="j.id" *ngFor="let j of services">
+           {{j.attributes.name}}
+         </option>
+       </select>
+       <div *ngIf="form.service.errors" class="invalid-feedback">
+         <div *ngIf="form.service.errors.required">Service is required!</div>
+       </div>
+     </div>
+     <div class="form-group">
+       <label for="time" class="form-label">Time (in minutes) *</label>
+       <input type="number" min="0" id="time" name="time" formControlName="time" class="form-control"
+         [ngClass]="{'is-invalid':form.time.touched && form.time.errors }">
+       <div *ngIf="form.time.errors" class="invalid-feedback">
+         <div *ngIf="form.time.errors.required">Time is required and needs to be entered in minutes!</div>
+         <p *ngIf="form.time.errors.pattern" class="text-danger">Only Integer numbers allowed, without comma or dots!
+         </p>
+         <p *ngIf="form.time.errors.minlength" class="text-danger">Minimum value for time is 1 minute!</p>
+       </div>
+     </div>
+     <div class="form-group">
+       <label for="note" class="form-label">Note </label>
+       <textarea type="text" id="note" name="note" rows="5" formControlName="note" class="form-control"></textarea>
+     </div>
+     <div class="form-group float-btn text-right">
+       <br>
+       <button type="button" class="btn  btn-dark margin-right-10" (click)="resetForm()"
+         title="Reset form">Reset</button>
+       <button type="submit" class="btn  btn-dark" [disabled]="!entryForm.valid" title="Save entry">Save</button>
+     </div>
+   </form>
+ </div>
